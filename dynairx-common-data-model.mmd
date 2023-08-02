@@ -1,0 +1,91 @@
+erDiagram
+  PERSON {
+    person_id integer
+    gender_concept_id integer
+    date_of_birth datetime
+    ethnicity varchar
+    sex varchar
+    imd_score integer
+    provider_id integer
+  }
+  VISIT_OCCURRENCE {
+    visit_occurrence_id integer
+    person_id integer
+    visit_concept_id integer
+    visit_start_date date
+    visit_start_datetime datetime
+    visit_end_date date
+    visit_end_datetime datetime
+    visit_type_concept_id Integer
+    provider_id integer
+    care_site_id integer
+    visit_source_value varchar
+  }
+  CONDITION_OCCURRENCE {
+    condition_occurrence_id integer
+    person_id integer
+    snomed_id integer
+    condition_start_date date
+    condition_end_date date
+    provider_id integer
+    condition_source_value varchar
+    condition_source_concept_id integer
+    condition_status_source_value varchar
+  }
+  DRUG_EXPOSURE {
+    drug_exposure_id integer
+    person_id integer
+    drug_concept_id integer
+    drug_exposure_start_date date
+    drug_exposure_end_date date
+    quantity float
+    provider_id integer
+    drug_source_value varchar
+    drug_source_concept_id integer
+    dose_unit_source_value varchar
+  }
+  MEASUREMENT {
+    measurement_id integer
+    person_id integer
+    measurement_concept_id integer
+    measurement_date date
+    measurement_datetime datetime
+    measurement_time varchar
+    measurement_type_concept_id integer
+    value_as_number float
+    unit_concept_id integer
+    range_low float
+    range_high float
+    provider_id integer
+    measurement_source_value varchar
+    measurement_source_concept_id integer
+    unit_source_value varchar
+    unit_source_concept_id integer
+    value_source_value varchar
+    measurement_event_id integer
+    meas_event_field_concept_id integer
+  }
+  OBSERVATION {
+    observation_id integer
+    person_id integer
+    observation_concept_id integer
+    observation_date date
+    observation_datetime datetime
+    observation_type_concept_id integer
+    value_as_number float
+    value_as_string varchar
+    value_as_concept_id Integer
+    qualifier_concept_id integer
+    unit_concept_id integer
+    provider_id integer
+    observation_source_value varchar
+    observation_source_concept_id integer
+    unit_source_value varchar
+  }
+  VISIT_OCCURRENCE ||--o{ PERSON : ""
+  CONDITION_OCCURRENCE ||--o{ PERSON : ""
+  DRUG_EXPOSURE ||--o{ PERSON : ""
+  MEASUREMENT ||--o{ PERSON : ""
+  OBSERVATION ||--o{ PERSON : ""
+  
+  
